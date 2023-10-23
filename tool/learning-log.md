@@ -1,13 +1,14 @@
 # Tool Learning Log
 
-Tool: **X**
+Tool: Kaboom
 
-Project: **X**
+Project: A game where a sprite has to collect fruits while avoiding obstacles to get to the next level
 
 ---
 
-X/X/X:
-* Text
+10/23/2023
+https://jsbin.com/neqazijeyo/edit?html,output 
+
 
 X/X/X:
 * Text
