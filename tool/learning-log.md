@@ -8,6 +8,8 @@ Project: A game where a sprite has to collect fruits while avoiding obstacles to
 
 10/23/2023
 https://jsbin.com/neqazijeyo/edit?html,output 
+- ^ tried to put it in jsbin
+-  Changed the positioning of the text by changing the coordinates
 
 11/06/2023
 - worked with the code on kaboom.js, worked with movement
