@@ -80,6 +80,17 @@ const level = addLevel([
 - The symbols actually have a reason of being there, the symbols are defined in such that is is defined, and the symbols then put the sprites in the order of which it is called.
 
 
+- Putting assets
+```js
+// Load assets
+loadSprite("bean", "/sprites/bean.png")
+loadSprite("ghosty", "/sprites/ghosty.png")
+loadSprite("grass", "/sprites/grass.png")
+loadSprite("steel", "/sprites/steel.png")
+```
+- Have to give the sprite a name and then have to go into a folder and select the image
+
+
 
   
 
