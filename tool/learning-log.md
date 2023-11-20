@@ -127,7 +127,47 @@ kaboom({
 	letterbox: true,
 })
 ```
+### 11/17/23
 
+- Learned how to create multiple levels using symbols, it's the same as setting a regular level, however all you have to do is add another set of symbols within another set of brackets. (still confused how to get from one level to the other)
+```js
+const LEVELS = [
+	[
+		"    0       ",
+		"   --       ",
+		"       $$   ",
+		" %    ===   ",
+		"            ",
+		"   ^^  > = @",
+		"============",
+	],
+	[
+		"                          $",
+		"                          $",
+		"                          $",
+		"                          $",
+		"                          $",
+		"           $$         =   $",
+		"  %      ====         =   $",
+		"                      =   $",
+		"                      =    ",
+		"       ^^      = >    =   @",
+		"===========================",
+	],
+	[
+		"     $    $    $    $     $",
+		"     $    $    $    $     $",
+		"                           ",
+		"                           ",
+		"                           ",
+		"                           ",
+		"                           ",
+		" ^^^^>^^^^>^^^^>^^^^>^^^^^@",
+		"===========================",
+	],
+]
+```
+- This will come in handy as I wanted to create multiple levels (still debating on multiple easy levels or 1 hard one)
 
 
 
