@@ -169,6 +169,20 @@ const LEVELS = [
 ```
 - This will come in handy as I wanted to create multiple levels (still debating on multiple easy levels or 1 hard one)
 
+### 11/18/23
+- Played around with the score, changed how much the score increased when the sprite collided with the heart, made me think of if the player collides with a different sprite, it'll minus the score
+
+```js
+player.onCollide("heart", (heart) => {
+		addKaboom(player.pos)
+		score += 10
+		destroy(heart)
+		scoreLabel.text = score
+		burp()
+		shake(12)
+	})
+
+```
 
 
   
