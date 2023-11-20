@@ -207,8 +207,18 @@ add([
 ])
 
 ```
-  
 
+- Practiced with `.isHovering`, pretty simple as you just add it to whatever sprite you want, and them add a action you want to happen as the player hovers above the sprite. 
+```js
+player.onUpdate(() => {
+	// .isHovering() is provided by area() component, which returns a boolean of if the object is currently being hovered on
+	if (player.isHovering()) {
+		player.color = rgb(35, 100, 255)
+	} else {
+		player.color = rgb()
+	}
+}
+```
 
 
 
