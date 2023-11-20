@@ -112,6 +112,23 @@ let timeLeft = 30
 		timer.text = timeLeft.toFixed(2)
 	})
 ```
+### 11/16/23
+
+- Played with the width and height of the screen
+- Changed it which made screen larger which made me realize I like that in a game and will make my future game with a larger screen and smaller obsticles
+```js
+kaboom({
+	// without specifying "width" and "height", kaboom will size to the container (document.body by default)
+	width: 200,
+	height: 200,
+	// "stretch" stretches the defined width and height to fullscreen
+	// stretch: true,
+	// "letterbox" makes stretching keeps aspect ratio (leaves black bars on empty spaces), have no effect without "stretch"
+	letterbox: true,
+})
+```
+
+
 
 
   
