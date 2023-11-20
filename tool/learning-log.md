@@ -78,6 +78,8 @@ const level = addLevel([
 
 ```
 - The symbols actually have a reason of being there, the symbols are defined in such that is is defined, and the symbols then put the sprites in the order of which it is called.
+- Added more symbols to the level which added more objects to the level
+
 
 
 - Putting assets
@@ -90,6 +92,26 @@ loadSprite("steel", "/sprites/steel.png")
 ```
 - Have to give the sprite a name and then have to go into a folder and select the image
 
+### 11/14/2023
+- Played around with the timer, changed it to a higher time leading to it being easier to get a higher score.
+
+```js
+let timeLeft = 30
+
+	const timer = add([
+		anchor("topright"),
+		pos(width() - 24, 24),
+		text(timeLeft),
+	])
+
+	onUpdate(() => {
+		timeLeft -= dt()
+		if (timeLeft <= 0) {
+			go("win", score.value)
+		}
+		timer.text = timeLeft.toFixed(2)
+	})
+```
 
 
   
