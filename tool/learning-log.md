@@ -233,7 +233,11 @@ add([
 ])
 ```
 
+### 11/26/23
 
+- Took a look at the [discord](https://discord.com/channels/883781994583056384/1047066099587502110) that Kaboom has and realised it has a help channel with other people that have had issues in the past so I can learn from other people's mistakes which could be useful if I don't have anyone else available.
+
+- Get to see other peoples, bugs, projects and hardships they have had/made
 
 
 
