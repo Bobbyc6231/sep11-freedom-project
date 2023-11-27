@@ -219,7 +219,19 @@ player.onUpdate(() => {
 	}
 }
 ```
+### 11/24/23
 
+- I played in the playground for so long not realising that the [kaboom](https://kaboomjs.com/#area) website has all the componants listed out and it is kind of like bootstrap but for javascript as it has every componant lised out and all you have to do is add it to whatever project you are using
+
+- learned about `offscreen` things however I don't think I will be using that in my game as I don't know how it would be used. However low chance but I could use that as a way to collect a easter egg fruit in my game.
+```js
+add([
+    pos(player.pos),
+    sprite("bullet"),
+    offscreen({ destroy: true }),
+    "projectile",
+])
+```
 
 
 
