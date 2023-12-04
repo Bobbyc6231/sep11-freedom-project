@@ -241,7 +241,7 @@ add([
 
 ### 12/01/23
 
-1) Took a look at the `ancor` element
+1) Took a look at the `anchor` element
 ```js
 add([
     rect(40, 10),
@@ -252,7 +252,7 @@ add([
 - Changed the ancor to be all around the screen
 - Learned ancor can be used for a variety of differnt objects
 
-2) Explored how `drag elements can work
+2) Explored how `Drag` elements can work
 
 ```js
 bean.onDrag(() => {
