@@ -239,7 +239,43 @@ add([
 
 - Get to see other peoples, bugs, projects and hardships they have had/made
 
+### 12/01/23
 
+1) Took a look at the `ancor` element
+```js
+add([
+    rect(40, 10),
+    rotate(45),
+    anchor("center"),
+])
+```
+- Changed the ancor to be all around the screen
+- Learned ancor can be used for a variety of differnt objects
+
+2) Explored how `drag elements can work
+
+```js
+bean.onDrag(() => {
+		// Remove the object and re-add it, so it'll be drawn on top
+		readd(bean)
+	})
+```
+-Understood how it intakes whatever sprite the user clicks and removes it from wherever the location is and adds it toward the front of the screen
+
+3) played around with the maze they made and the `onclick` code they used
+
+```js
+onClick(() => {
+	const pos = mousePos()
+	bean.setTarget(vec2(
+		Math.floor(pos.x / TILE_WIDTH) * TILE_WIDTH + TILE_WIDTH / 2,
+		Math.floor(pos.y / TILE_HEIGHT) * TILE_HEIGHT + TILE_HEIGHT / 2,
+	))
+})
+```
+- Still confused on the math that was used to make the sprite move wherever the user clicked
+
+  
 
 
 <!-- 
