@@ -112,18 +112,177 @@ let timeLeft = 30
 		timer.text = timeLeft.toFixed(2)
 	})
 ```
+### 11/16/23
 
-### 12
+- Played with the width and height of the screen
+- Changed it which made screen larger which made me realize I like that in a game and will make my future game with a larger screen and smaller obsticles
+```js
+kaboom({
+	// without specifying "width" and "height", kaboom will size to the container (document.body by default)
+	width: 200,
+	height: 200,
+	// "stretch" stretches the defined width and height to fullscreen
+	// stretch: true,
+	// "letterbox" makes stretching keeps aspect ratio (leaves black bars on empty spaces), have no effect without "stretch"
+	letterbox: true,
+})
+```
+### 11/17/23
 
+- Learned how to create multiple levels using symbols, it's the same as setting a regular level, however all you have to do is add another set of symbols within another set of brackets. (still confused how to get from one level to the other)
+```js
+const LEVELS = [
+	[
+		"    0       ",
+		"   --       ",
+		"       $$   ",
+		" %    ===   ",
+		"            ",
+		"   ^^  > = @",
+		"============",
+	],
+	[
+		"                          $",
+		"                          $",
+		"                          $",
+		"                          $",
+		"                          $",
+		"           $$         =   $",
+		"  %      ====         =   $",
+		"                      =   $",
+		"                      =    ",
+		"       ^^      = >    =   @",
+		"===========================",
+	],
+	[
+		"     $    $    $    $     $",
+		"     $    $    $    $     $",
+		"                           ",
+		"                           ",
+		"                           ",
+		"                           ",
+		"                           ",
+		" ^^^^>^^^^>^^^^>^^^^>^^^^^@",
+		"===========================",
+	],
+]
+```
+- This will come in handy as I wanted to create multiple levels (still debating on multiple easy levels or 1 hard one)
 
+### 11/18/23
+- Played around with the score, changed how much the score increased when the sprite collided with the heart, made me think of if the player collides with a different sprite, it'll minus the score
 
+```js
+player.onCollide("heart", (heart) => {
+		addKaboom(player.pos)
+		score += 10
+		destroy(heart)
+		scoreLabel.text = score
+		burp()
+		shake(12)
+	})
 
+```
 
+### 11/20/23
+- Leaned about `isStatic`. Added it to a different sprite so that it doesn't move (origionally just on the grass sprite, now it it also added onto the steel sprite)
 
+```js
+add([
+	sprite("grass"),
+	pos(center()),
+	area(),
+	// This game object also has isStatic, so our player won't be able to move pass this
+	body({ isStatic: true }),
+	"grass",
+])
 
+add([
+	sprite("steel"),
+	pos(100, 200),
+	area(),
+	// This will not be static, but have a big mass that's hard to push over
+	body({ isStatic: true }),
+	"steel",
+])
 
+```
+
+- Practiced with `.isHovering`, pretty simple as you just add it to whatever sprite you want, and them add a action you want to happen as the player hovers above the sprite.
+```js
+player.onUpdate(() => {
+	// .isHovering() is provided by area() component, which returns a boolean of if the object is currently being hovered on
+	if (player.isHovering()) {
+		player.color = rgb(35, 100, 255)
+	} else {
+		player.color = rgb()
+	}
+}
+```
+### 11/24/23
+
+- I played in the playground for so long not realising that the [kaboom](https://kaboomjs.com/#area) website has all the componants listed out and it is kind of like bootstrap but for javascript as it has every componant lised out and all you have to do is add it to whatever project you are using
+
+- learned about `offscreen` things however I don't think I will be using that in my game as I don't know how it would be used. However low chance but I could use that as a way to collect a easter egg fruit in my game.
+```js
+add([
+    pos(player.pos),
+    sprite("bullet"),
+    offscreen({ destroy: true }),
+    "projectile",
+])
+```
+
+### 11/26/23
+
+- Took a look at the [discord](https://discord.com/channels/883781994583056384/1047066099587502110) that Kaboom has and realised it has a help channel with other people that have had issues in the past so I can learn from other people's mistakes which could be useful if I don't have anyone else available.
+
+- Get to see other peoples, bugs, projects and hardships they have had/made
+
+### 12/01/23
+
+1) Took a look at the `anchor` element
+```js
+add([
+    rect(40, 10),
+    rotate(45),
+    anchor("center"),
+])
+```
+- Changed the ancor to be all around the screen
+- Learned ancor can be used for a variety of differnt objects
+
+2) Explored how `Drag` elements can work
+
+```js
+bean.onDrag(() => {
+		// Remove the object and re-add it, so it'll be drawn on top
+		readd(bean)
+	})
+```
+-Understood how it intakes whatever sprite the user clicks and removes it from wherever the location is and adds it toward the front of the screen
+
+3) played around with the maze they made and the `onclick` code they used
+
+```js
+onClick(() => {
+	const pos = mousePos()
+	bean.setTarget(vec2(
+		Math.floor(pos.x / TILE_WIDTH) * TILE_WIDTH + TILE_WIDTH / 2,
+		Math.floor(pos.y / TILE_HEIGHT) * TILE_HEIGHT + TILE_HEIGHT / 2,
+	))
+})
+```
+- Still confused on the math that was used to make the sprite move wherever the user clicked
+
+### 12/06/23
+- First time added stuff into my ide and trying a project from scratch
+- Added a sprite and got it being able to move
+- tried many different componants of kaboom however I kept on getting the error that a png is not defined
+[link to the code](sep11-freedom-project/index.html)
 
 <!--
+>>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
 * Challenges, a-ha moments, etc
