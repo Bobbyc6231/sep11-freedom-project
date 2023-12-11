@@ -279,7 +279,7 @@ onClick(() => {
 - First time added stuff into my ide and trying a project from scratch
 - Added a sprite and got it being able to move
 - tried many different componants of kaboom however I kept on getting the error that a png is not defined
-[link to the code](sep11-freedom-project/index.html)
+[link to the code](index.html)
 
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
