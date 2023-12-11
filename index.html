@@ -28,40 +28,112 @@
             import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
 
            // start the game
-kaboom()
+// kaboom()
 
-// define gravity
-setGravity(0)
+// // define gravity
+// setGravity(0)
 
-// load a default sprite
-loadBean()
+// // load a default sprite
+// loadBean()
 
-// add character to screen, from a list of components
-const player = add([
-    sprite("bean"),  // renders as a sprite
-    pos(120, 80),    // position in world
-    area(),          // has a collider
-    body(),          // responds to physics and gravity
+// // add character to screen, from a list of components
+// const player = add([
+//     sprite("bean"),  // renders as a sprite
+//     pos(120, 80),    // position in world
+//     area(),          // has a collider
+//     body(),          // responds to physics and gravity
+// ])
+
+// const SPEED = 320
+
+// onKeyDown("left", () => {
+// 	// .move() is provided by pos() component, move by pixels per second
+// 	player.move(-SPEED, 0)
+// })
+
+// onKeyDown("right", () => {
+// 	player.move(SPEED, 0)
+// })
+
+// onKeyDown("up", () => {
+// 	player.move(0, -SPEED)
+// })
+
+// onKeyDown("down", () => {
+// 	player.move(0, SPEED)
+// })
+
+kaboom({
+	background: [ 255, 255, 128 ],
+})
+
+// add paddles
+add([
+	pos(40, 0),
+	rect(20, 80),
+	outline(4),
+	anchor("center"),
+	area(),
+	"paddle",
 ])
 
-const SPEED = 320
+add([
+	pos(width() - 40, 0),
+	rect(20, 80),
+	outline(4),
+	anchor("center"),
+	area(),
+	"paddle",
+])
 
-onKeyDown("left", () => {
-	// .move() is provided by pos() component, move by pixels per second
-	player.move(-SPEED, 0)
+// move paddles with mouse
+onUpdate("paddle", (p) => {
+	p.pos.y = mousePos().y
 })
 
-onKeyDown("right", () => {
-	player.move(SPEED, 0)
+// score counter
+let score = 0
+
+add([
+	text(score),
+	pos(center()),
+	anchor("center"),
+	z(50),
+	{ update() { this.text = score }},
+])
+
+// ball
+let speed = 480
+
+const ball = add([
+	pos(center()),
+	circle(16),
+	outline(4),
+	area({ shape: new Rect(vec2(-16), 32, 32) }),
+	{ vel: Vec2.fromAngle(rand(-20, 20)) },
+])
+
+// move ball, bounce it when touche horizontal edges, respawn when touch vertical edges
+ball.onUpdate(() => {
+	ball.move(ball.vel.scale(speed))
+	if (ball.pos.x < 0 || ball.pos.x > width()) {
+		score = 0
+		ball.pos = center()
+		ball.vel = Vec2.fromAngle(rand(-20, 20))
+		speed = 320
+	}
+	if (ball.pos.y < 0 || ball.pos.y > height()) {
+		ball.vel.y = -ball.vel.y
+	}
 })
 
-onKeyDown("up", () => {
-	player.move(0, -SPEED)
+// bounce when touch paddle
+ball.onCollide("paddle", (p) => {
+	speed += 60
+	ball.vel = Vec2.fromAngle(ball.pos.angle(p.pos))
+	score++
 })
 
-onKeyDown("down", () => {
-	player.move(0, SPEED)
-})
 
             </script>
 
