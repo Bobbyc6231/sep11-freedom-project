@@ -279,7 +279,45 @@ onClick(() => {
 - First time added stuff into my ide and trying a project from scratch
 - Added a sprite and got it being able to move
 - tried many different componants of kaboom however I kept on getting the error that a png is not defined
-[link to the code](index.html)
+```js
+kaboom()
+
+// define gravity
+setGravity(0)
+
+// load a default sprite
+loadBean()
+
+// add character to screen, from a list of components
+const player = add([
+    sprite("bean"),  // renders as a sprite
+    pos(120, 80),    // position in world
+    area(),          // has a collider
+    body(),          // responds to physics and gravity
+])
+
+const SPEED = 320
+
+onKeyDown("left", () => {
+	// .move() is provided by pos() component, move by pixels per second
+	player.move(-SPEED, 0)
+})
+
+onKeyDown("right", () => {
+	player.move(SPEED, 0)
+})
+
+onKeyDown("up", () => {
+	player.move(0, -SPEED)
+})
+
+onKeyDown("down", () => {
+	player.move(0, SPEED)
+})
+```
+- Pretty simple however it is satisfying to put what I have learned into an actual practice project
+
+
 
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
