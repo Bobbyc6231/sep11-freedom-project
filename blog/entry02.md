@@ -17,8 +17,8 @@ kaboom({
 ```
 
 ### Engineering Design Process
+In the Engineering Design Process, I am currently in steps 2 and 3 which is research and brainstorming. Throughout the time of my tinkering I have been researching different things and trying new things that I could potentially add to my future game. Researching hasn't been as bad as I first thought it would be. For me in this whole process so far, I think that the hardest part has been the beginning when I was first getting started because I didn't have any clue where to begin. When I first was lost, I started to do the small things, changing small bits of code and whenever it would work the way I thought it might I would genuinely be shocked. While changing different things I would also be brainstorming which parts I would like to add to my game and what I don't necessarlly need. An example pf this when I was tinkering with designing the levels, I knew I would need to have that in my future game, yet when I was tinkering with the `offscreen` code I knew I wasn't going to use it in my freedom project. 
 
-+
 
 ### Skills
 
