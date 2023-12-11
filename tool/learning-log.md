@@ -316,7 +316,7 @@ onKeyDown("down", () => {
 })
 ```
 - Pretty simple however it is satisfying to put what I have learned into an actual practice project
-- Also tried adding differnt types of games into my ide (learned that it is easy to bring the kaboom code into my ide, however for certain games and componants I still need to find out where to find the pngs from)
+- Also tried adding different types of games into my ide such as the pong game (learned that it is easy to bring the kaboom code into my ide, however for certain games and componants I still need to find out where to find the pngs from)
 
 ```js
 kaboom({
