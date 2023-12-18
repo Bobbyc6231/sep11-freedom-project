@@ -2,7 +2,7 @@
 ##### 12/11/2023
 
 ### Content
-In the past month or so, I have been tinkering and trying to learn more about (https://kaboomjs.com/)[Kaboom]. This has been definetly a new experience and something very different from what I am used to. I looked at a bunch of different componants of kaboom and tried different things to switch it up. For instance, one way I was tinkering was playing around with the width an height of the screen. I reaized that the change of `height` would effect how tall the screen would be and the `width` changed how wide the screen would be. The code below shows the screen being a square however after playing around with it such as changing the height to 100, the screen becomes more rectangle as the height is now half of how wide the screen is.
+In the past month or so, I have been tinkering and trying to learn more about [Kaboom](https://kaboomjs.com/). This has been definetly a new experience and something very different from what I am used to. I looked at a bunch of different componants of kaboom and tried different things to switch it up. For instance, one way I was tinkering was playing around with the width an height of the screen. I reaized that the change of `height` would effect how tall the screen would be and the `width` changed how wide the screen would be. The code below shows the screen being a square however after playing around with it such as changing the height to 100, the screen becomes more rectangle as the height is now half of how wide the screen is.
 
 ```js
 kaboom({
