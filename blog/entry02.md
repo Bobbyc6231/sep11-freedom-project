@@ -2,19 +2,23 @@
 ##### 12/11/2023
 
 
+
+
 ### Content
 In the past month or so, I have been tinkering and trying to learn more about [Kaboom](https://kaboomjs.com/). This has definitely been a new experience and something very different from what I am used to. I looked at a bunch of different components of kaboom and tried different things to switch it up. For instance, one way I was tinkering was playing around with the width and height of the screen. I realized that the change of `height` would affect how tall the screen would be and the `width` changed how wide the screen would be. The code below shows the screen being a square however after playing around with it such as changing the height to 100, the screen becomes more rectangle as the height is now half of how wide the screen is.
 
 
+
+
 ```js
 kaboom({
-   // without specifying "width" and "height", kaboom will size to the container (document.body by default)
-   width: 200,
-   height: 200,
-   // "stretch" stretches the defined width and height to fullscreen
-   // stretch: true,
-   // "letterbox" makes stretching keeps aspect ratio (leaves black bars on empty spaces), have no effect without "stretch"
-   letterbox: true,
+  // without specifying "width" and "height", kaboom will size to the container (document.body by default)
+  width: 200,
+  height: 200,
+  // "stretch" stretches the defined width and height to fullscreen
+  // stretch: true,
+  // "letterbox" makes stretching keeps aspect ratio (leaves black bars on empty spaces), have no effect without "stretch"
+  letterbox: true,
 })
 ```
 Another example of my tinkering has been with the `isStatic` element. In kaboom, when you go to the [collision section](https://kaboomjs.com/play?example=collision), it has a sprite that you can move around using the keyboard and there are 3 obstacles on the screen, there are ghosts, a grass block and a steel block. Once the sprite touches the ghosts, the ghosts disappear. When the sprite presses against the steel block, it moves, and once the sprite pushes against the grass black, it doesn't move. I was wondering what made it so that the steel block moved, but the grass block did not. I then found out that `isStatic` is responsible for that because I then added that element to the steel block and it didn't move when I pushed the sprite against it.
@@ -22,26 +26,36 @@ Another example of my tinkering has been with the `isStatic` element. In kaboom,
 
 
 
+
+
+
+
 ```js
 add([
-   sprite("grass"),
-   pos(center()),
-   area(),
-   body({ isStatic: true }),
-   "grass",
+  sprite("grass"),
+  pos(center()),
+  area(),
+  body({ isStatic: true }),
+  "grass",
 ])
+
+
 
 
 add([
-   sprite("steel"),
-   pos(100, 200),
-   area(),
-   body({ isStatic: true }),
-   "steel",
+  sprite("steel"),
+  pos(100, 200),
+  area(),
+  body({ isStatic: true }),
+  "steel",
 ])
+
+
 
 
 ```
+
+
 
 
 ### Engineering Design Process
@@ -50,8 +64,18 @@ In the Engineering Design Process, I am currently in steps 2 and 3 which is *res
 
 
 
+
+
+
+
 ### Skills
-Two skills I've worked on during the last few weeks is practicing *how to learn* and better *time management*. I have been learning many different aspects about *kaboom* all on my own. I am not used to learning without guidance and this is one of the first times I am doing so. Practicing those skills by trying it on my own was educational and in a small way kind of fun. Trying something new and whenever it would work would make me feel a small amount of satisfaction and a little proud of myself. Last year when I was doing my freedom project, I did not manage my time well at all and did not practice with my tool when I should have. This year has been different and I have been keeping up with practicing with my tool when I should be. In class whenever it is time to practice, I do so and I actually make a small amount of progress. It hasn't been the easiest thing I have ever done however I have been trying harder and putting more effort then I have last year.
+Two skills I've worked on during the last few weeks is practicing *how to learn* and better *time management*. I have been learning many different aspects about *kaboom* all on my own. I am not used to learning without guidance and this is one of the first times I am doing so. Practicing those skills by trying it on my own was educational and in a small way kind of fun. Trying something new and whenever it would work would make me feel a small amount of satisfaction and a little proud of myself. Last year when I was doing my freedom project, I did not manage my time well at all and did not practice with my tool when I should have. This year has been different and I have been keeping up with practicing with my tool when I should be. In class whenever it is time to practice, I do so and I actually make a small amount of progress. It hasn't been the easiest thing I have ever done, however I have been trying harder and putting more effort than I did last year.
+
+
+
+
+
+
 
 
 
@@ -61,7 +85,15 @@ Two skills I've worked on during the last few weeks is practicing *how to learn*
 [Previous](entry01.md) | [Next](entry03.md)
 
 
+
+
 [Home](../README.md)
+
+
+
+
+
+
 
 
 
