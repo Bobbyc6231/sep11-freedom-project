@@ -55,8 +55,7 @@ add([
 
 ```
 
-
-
+In a week, there will be a week-long christmas break and I am very excited for it to be able to finally relax and take a break from all the stresses in my life. During this break I will have some free time to work on my freedom project. What I plan to do during this time is to start my own game in my ide. I plan to create a small game where the sprite has to move around different obstacles and collect coins as a small project to hopefully then eventually finish my original project idea one day. This is kind of like a test project to make sure I know what I am doing and can complete an idea similar to what I want my final project to be. If I am able to do this over the break, I will definitely feel more confident in what I am doing and then after the break I plan to keep on learning a little more then I will begin working on my final project for this school year.
 
 ### Engineering Design Process
 In the Engineering Design Process, I am currently in steps 2 and 3 which is *research* and *brainstorming*. Throughout the time of my tinkering I have been researching different things and trying new things that I could potentially add to my future game. Researching hasn't been as bad as I first thought it would be. For me in this whole process so far, I think that the hardest part has been the beginning when I was first getting started because I didn't have any clue where to begin. When I first was lost, I started to do the small things, changing small bits of code and whenever it would work the way I thought it might, I would genuinely be shocked. While changing different things I would also be brainstorming which parts I would like to add to my game and what I don't necessarily need. An example of this was when I was tinkering with designing the levels, I knew I would need to have that in my future game, yet when I was tinkering with the `offscreen` code I knew I wasn't going to use it in my freedom project.
