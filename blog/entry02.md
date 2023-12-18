@@ -15,7 +15,7 @@ kaboom({
 	letterbox: true,
 })
 ```
-Another example of my tinkering has been with the `isStatic` element. In kaboom, when you go to the collision section, it has a sprite that you can move around using the keyboard and there are 3 obsticles on the screen, there is ghosts, a grass block and a steel block. Once the sprite touches the ghosts, the ghosts disapear. When the sprite presses against the steel block, it moves, and once the sprite pushes against the grass black, it doesn't move. I was wondering what made it so that the steel block moved, but the grass block not. I then fund out that `isStatic` is responsible for that because I then added that element to the steel block and it didn't move when I pushed the sprite against it.
+Another example of my tinkering has been with the `isStatic` element. In kaboom, when you go to the [collision section](https://kaboomjs.com/play?example=collision), it has a sprite that you can move around using the keyboard and there are 3 obsticles on the screen, there is ghosts, a grass block and a steel block. Once the sprite touches the ghosts, the ghosts disapear. When the sprite presses against the steel block, it moves, and once the sprite pushes against the grass black, it doesn't move. I was wondering what made it so that the steel block moved, but the grass block not. I then fund out that `isStatic` is responsible for that because I then added that element to the steel block and it didn't move when I pushed the sprite against it.
 
 
 ```js
