@@ -160,11 +160,15 @@ setGravity(808
 const level = addLevel([
 	// Design the level layout with symbols
 	"@  ^ $$",
-	"=======",
+	"================",
 	"       ",
-	"       ",
-	"       ",
-	"======="
+	"      ",
+	"   ^^^^    ",
+	"================",
+	"                ",
+	"                ",
+	"                ",
+	"================"
 ], {
 	// The size of each grid
 	tileWidth: 64,
@@ -227,7 +231,6 @@ player.onCollide("danger", () => {
 // Eat the coin!
 player.onCollide("coin", (coin) => {
 	destroy(coin)
-	play("score")
 })
 
 

@@ -398,6 +398,11 @@ ball.onCollide("paddle", (p) => {
 - I now need to find where I could find better images of the sprites instead of taking screenshots of them and uploading them
 [code to the example](../index.html)
 
+- Once I used the template, I changed it up even more by adding more obsticles and completly customizing the game to my liking
+ (added more land, obsticles, and coins)
+
+- Completed my goal for what I wanted to do over Christmas break/realizing I am getting closer to creating my Freedom Project
+
 
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
