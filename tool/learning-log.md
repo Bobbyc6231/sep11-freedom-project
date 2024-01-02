@@ -391,6 +391,12 @@ ball.onCollide("paddle", (p) => {
 })
 ```
 
+### 12/30/23
+
+- I used a template from kaboom.js
+- I was able to use the code however I had to upload my own sprites
+- I now need to find where I could find better images of the sprites instead of taking screenshots of them and uploading them
+[code to the example](../index.html)
 
 
 <!--

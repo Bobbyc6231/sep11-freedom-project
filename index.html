@@ -63,76 +63,173 @@
 // 	player.move(0, SPEED)
 // })
 
-kaboom({
-	background: [ 255, 255, 128 ],
+
+
+
+
+// kaboom({
+// 	background: [ 255, 255, 128 ],
+// })
+
+// // add paddles
+// add([
+// 	pos(40, 0),
+// 	rect(20, 80),
+// 	outline(4),
+// 	anchor("center"),
+// 	area(),
+// 	"paddle",
+// ])
+
+// add([
+// 	pos(width() - 40, 0),
+// 	rect(20, 80),
+// 	outline(4),
+// 	anchor("center"),
+// 	area(),
+// 	"paddle",
+// ])
+
+// // move paddles with mouse
+// onUpdate("paddle", (p) => {
+// 	p.pos.y = mousePos().y
+// })
+
+// // score counter
+// let score = 0
+
+// add([
+// 	text(score),
+// 	pos(center()),
+// 	anchor("center"),
+// 	z(50),
+// 	{ update() { this.text = score }},
+// ])
+
+// // ball
+// let speed = 480
+
+// const ball = add([
+// 	pos(center()),
+// 	circle(16),
+// 	outline(4),
+// 	area({ shape: new Rect(vec2(-16), 32, 32) }),
+// 	{ vel: Vec2.fromAngle(rand(-20, 20)) },
+// ])
+
+// // move ball, bounce it when touche horizontal edges, respawn when touch vertical edges
+// ball.onUpdate(() => {
+// 	ball.move(ball.vel.scale(speed))
+// 	if (ball.pos.x < 0 || ball.pos.x > width()) {
+// 		score = 0
+// 		ball.pos = center()
+// 		ball.vel = Vec2.fromAngle(rand(-20, 20))
+// 		speed = 320
+// 	}
+// 	if (ball.pos.y < 0 || ball.pos.y > height()) {
+// 		ball.vel.y = -ball.vel.y
+// 	}
+// })
+
+// // bounce when touch paddle
+// ball.onCollide("paddle", (p) => {
+// 	speed += 60
+// 	ball.vel = Vec2.fromAngle(ball.pos.angle(p.pos))
+// 	score++
+// })
+
+
+// Build levels with addLevel()
+
+// Start game
+kaboom()
+
+// Load assets
+loadSprite("bean", "/sprites/bean.png")
+loadSprite("coin", "/sprites/coin.png")
+loadSprite("spike", "/sprites/spike.png")
+loadSprite("grass", "/sprites/grass.png")
+loadSprite("ghosty", "/sprites/ghosty.png")
+
+
+const SPEED = 480
+
+setGravity(808
+		  )
+
+const level = addLevel([
+	// Design the level layout with symbols
+	"@  ^ $$",
+	"=======",
+	"       ",
+	"       ",
+	"       ",
+	"======="
+], {
+	// The size of each grid
+	tileWidth: 64,
+	tileHeight: 64,
+	// The position of the top left block
+	pos: vec2(100, 200),
+	// Define what each symbol means (in components)
+	tiles: {
+		"@": () => [
+			sprite("bean"),
+			area(),
+			body(),
+			anchor("bot"),
+			"player",
+		],
+		"=": () => [
+			sprite("grass"),
+			area(),
+			body({ isStatic: true }),
+			anchor("bot"),
+		],
+		"$": () => [
+			sprite("coin"),
+			area(),
+			anchor("bot"),
+			"coin",
+		],
+		"^": () => [
+			sprite("spike"),
+			area(),
+			anchor("bot"),
+			"danger",
+		],
+	},
 })
 
-// add paddles
-add([
-	pos(40, 0),
-	rect(20, 80),
-	outline(4),
-	anchor("center"),
-	area(),
-	"paddle",
-])
+// Get the player object from tag
+const player = level.get("player")[0]
 
-add([
-	pos(width() - 40, 0),
-	rect(20, 80),
-	outline(4),
-	anchor("center"),
-	area(),
-	"paddle",
-])
-
-// move paddles with mouse
-onUpdate("paddle", (p) => {
-	p.pos.y = mousePos().y
-})
-
-// score counter
-let score = 0
-
-add([
-	text(score),
-	pos(center()),
-	anchor("center"),
-	z(50),
-	{ update() { this.text = score }},
-])
-
-// ball
-let speed = 480
-
-const ball = add([
-	pos(center()),
-	circle(16),
-	outline(4),
-	area({ shape: new Rect(vec2(-16), 32, 32) }),
-	{ vel: Vec2.fromAngle(rand(-20, 20)) },
-])
-
-// move ball, bounce it when touche horizontal edges, respawn when touch vertical edges
-ball.onUpdate(() => {
-	ball.move(ball.vel.scale(speed))
-	if (ball.pos.x < 0 || ball.pos.x > width()) {
-		score = 0
-		ball.pos = center()
-		ball.vel = Vec2.fromAngle(rand(-20, 20))
-		speed = 320
+// Movements
+onKeyPress("space", () => {
+	if (player.isGrounded()) {
+		player.jump()
 	}
-	if (ball.pos.y < 0 || ball.pos.y > height()) {
-		ball.vel.y = -ball.vel.y
-	}
 })
 
-// bounce when touch paddle
-ball.onCollide("paddle", (p) => {
-	speed += 60
-	ball.vel = Vec2.fromAngle(ball.pos.angle(p.pos))
-	score++
+onKeyDown("left", () => {
+	player.move(-SPEED, 0)
 })
+
+onKeyDown("right", () => {
+	player.move(SPEED, 0)
+})
+
+// Back to the original position if hit a "danger" item
+player.onCollide("danger", () => {
+	player.pos = level.tile2Pos(0, 0)
+})
+
+// Eat the coin!
+player.onCollide("coin", (coin) => {
+	destroy(coin)
+	play("score")
+})
+
 
 
             </script>
