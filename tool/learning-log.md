@@ -396,7 +396,7 @@ ball.onCollide("paddle", (p) => {
 - I used a template from kaboom.js
 - I was able to use the code however I had to upload my own sprites
 - I now need to find where I could find better images of the sprites instead of taking screenshots of them and uploading them
-[code to the example](../index.html)
+([code to the example](../index.html))
 
 - Once I used the template, I changed it up even more by adding more obsticles and completly customizing the game to my liking
  (added more land, obsticles, and coins)
