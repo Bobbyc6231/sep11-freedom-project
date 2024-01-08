@@ -403,6 +403,22 @@ ball.onCollide("paddle", (p) => {
 
 - Completed my goal for what I wanted to do over Christmas break/realizing I am getting closer to creating my Freedom Project
 
+### 01/07/23
+
+- Wanted to cusomixe my game and make it a little more intreging to the user
+- Changed the background to be different colors and just played around with the background (changed up the rbg numbers)
+- I want to figure out how to change the background to become a specific image of my choosing
+- Changed my sprite to Kung fu panda instead of a bean
+
+```js
+kaboom({
+	background: [ 55, 25, 128 ],
+})
+```
+
+- I want to figure out how to add smaller things to make my game more interesting such as music (have to do more reserach on adding sounds and music)
+- Other things to potentially add(Easter eggs, two players)
+- Change it so that Kung fu Panda has to collect the food that he loves to get to the next level!!!!!!!!
 
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569

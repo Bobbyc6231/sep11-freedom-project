@@ -142,10 +142,12 @@
 // Build levels with addLevel()
 
 // Start game
-kaboom()
+kaboom({
+	background: [ 55, 25, 128 ],
+})
 
 // Load assets
-loadSprite("bean", "/sprites/bean.png")
+loadSprite("panda", "/sprites/panda.png")
 loadSprite("coin", "/sprites/coin.png")
 loadSprite("spike", "/sprites/spike.png")
 loadSprite("grass", "/sprites/grass.png")
@@ -178,7 +180,7 @@ const level = addLevel([
 	// Define what each symbol means (in components)
 	tiles: {
 		"@": () => [
-			sprite("bean"),
+			sprite("panda"),
 			area(),
 			body(),
 			anchor("bot"),
