@@ -22,132 +22,27 @@
         <!-- <script src="script.js"></script> -->
 
 
-        <script type="module">
-
-            // import kaboom lib
-            import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
-
-           // start the game
-// kaboom()
-
-// // define gravity
-// setGravity(0)
-
-// // load a default sprite
-// loadBean()
-
-// // add character to screen, from a list of components
-// const player = add([
-//     sprite("bean"),  // renders as a sprite
-//     pos(120, 80),    // position in world
-//     area(),          // has a collider
-//     body(),          // responds to physics and gravity
-// ])
-
-// const SPEED = 320
-
-// onKeyDown("left", () => {
-// 	// .move() is provided by pos() component, move by pixels per second
-// 	player.move(-SPEED, 0)
-// })
-
-// onKeyDown("right", () => {
-// 	player.move(SPEED, 0)
-// })
-
-// onKeyDown("up", () => {
-// 	player.move(0, -SPEED)
-// })
-
-// onKeyDown("down", () => {
-// 	player.move(0, SPEED)
-// })
 
 
 
 
 
-// kaboom({
-// 	background: [ 255, 255, 128 ],
-// })
 
-// // add paddles
-// add([
-// 	pos(40, 0),
-// 	rect(20, 80),
-// 	outline(4),
-// 	anchor("center"),
-// 	area(),
-// 	"paddle",
-// ])
+<script type="module">
 
-// add([
-// 	pos(width() - 40, 0),
-// 	rect(20, 80),
-// 	outline(4),
-// 	anchor("center"),
-// 	area(),
-// 	"paddle",
-// ])
+// import kaboom lib
+import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
 
-// // move paddles with mouse
-// onUpdate("paddle", (p) => {
-// 	p.pos.y = mousePos().y
-// })
-
-// // score counter
-// let score = 0
-
-// add([
-// 	text(score),
-// 	pos(center()),
-// 	anchor("center"),
-// 	z(50),
-// 	{ update() { this.text = score }},
-// ])
-
-// // ball
-// let speed = 480
-
-// const ball = add([
-// 	pos(center()),
-// 	circle(16),
-// 	outline(4),
-// 	area({ shape: new Rect(vec2(-16), 32, 32) }),
-// 	{ vel: Vec2.fromAngle(rand(-20, 20)) },
-// ])
-
-// // move ball, bounce it when touche horizontal edges, respawn when touch vertical edges
-// ball.onUpdate(() => {
-// 	ball.move(ball.vel.scale(speed))
-// 	if (ball.pos.x < 0 || ball.pos.x > width()) {
-// 		score = 0
-// 		ball.pos = center()
-// 		ball.vel = Vec2.fromAngle(rand(-20, 20))
-// 		speed = 320
-// 	}
-// 	if (ball.pos.y < 0 || ball.pos.y > height()) {
-// 		ball.vel.y = -ball.vel.y
-// 	}
-// })
-
-// // bounce when touch paddle
-// ball.onCollide("paddle", (p) => {
-// 	speed += 60
-// 	ball.vel = Vec2.fromAngle(ball.pos.angle(p.pos))
-// 	score++
-// })
-
+// initialize kaboom context
+kaboom();
 
 // Build levels with addLevel()
 
 // Start game
-kaboom({
-	background: [ 55, 25, 128 ],
-})
+kaboom()
 
 // Load assets
-loadSprite("panda", "/sprites/panda.png")
+loadSprite("panda2", "/sprites/panda2.png")
 loadSprite("coin", "/sprites/coin.png")
 loadSprite("spike", "/sprites/spike.png")
 loadSprite("grass", "/sprites/grass.png")
@@ -156,21 +51,12 @@ loadSprite("ghosty", "/sprites/ghosty.png")
 
 const SPEED = 480
 
-setGravity(808
-		  )
+setGravity(2400)
 
 const level = addLevel([
 	// Design the level layout with symbols
 	"@  ^ $$",
-	"================",
-	"       ",
-	"      ",
-	"   ^^^^    ",
-	"================",
-	"                ",
-	"                ",
-	"                ",
-	"================"
+	"=======",
 ], {
 	// The size of each grid
 	tileWidth: 64,
@@ -180,8 +66,9 @@ const level = addLevel([
 	// Define what each symbol means (in components)
 	tiles: {
 		"@": () => [
-			sprite("panda"),
+			sprite("panda2"),
 			area(),
+			set_size(0.5)
 			body(),
 			anchor("bot"),
 			"player",
@@ -233,11 +120,35 @@ player.onCollide("danger", () => {
 // Eat the coin!
 player.onCollide("coin", (coin) => {
 	destroy(coin)
+	play("score")
 })
 
 
 
-            </script>
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+	<!-- // "@  ^ $$",
+	// "================",
+	// "       ",
+	// "      ",
+	// "   ^^^^    ",
+	// "================",
+	// "                ",
+	// "                ",
+	// "                ",
+	// "================" -->
+
 
 
 

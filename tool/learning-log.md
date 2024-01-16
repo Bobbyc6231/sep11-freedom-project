@@ -420,6 +420,12 @@ kaboom({
 - Other things to potentially add(Easter eggs, two players)
 - Change it so that Kung fu Panda has to collect the food that he loves to get to the next level!!!!!!!!
 
+
+### 01/15/24
+
+- Tried `set size` to resize my sprite and it didn't work
+- Did research about how to resize however the only solution was to take a new image
+- I was able to choose a smaller image which was fine however I still need to find out how to shrink the image just to make it a little more easy to customize the images/sprites
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
 * Links you used today (websites, videos, etc)
