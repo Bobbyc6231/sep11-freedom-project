@@ -42,21 +42,41 @@ kaboom();
 kaboom()
 
 // Load assets
-loadSprite("panda2", "/sprites/panda2.png")
+loadSprite("panda3", "/sprites/panda3.png")
 loadSprite("coin", "/sprites/coin.png")
 loadSprite("spike", "/sprites/spike.png")
 loadSprite("grass", "/sprites/grass.png")
 loadSprite("ghosty", "/sprites/ghosty.png")
+loadSprite("minecraft2", "/sprites/minecraft2.png")
 
 
 const SPEED = 480
 
-setGravity(2400)
+setGravity(1000)
+
+add([
+	sprite("minecraft2", {width: width(), height: height()})
+]);
 
 const level = addLevel([
 	// Design the level layout with symbols
 	"@  ^ $$",
-	"=======",
+	   " ==========================",
+	   "    $$$$$$$$$$$$    ",
+	   "        ",
+	   " ===========================       ",
+	   "     $$               $$  ",
+	   "  $$.    ^     $$   ^            ",
+	" ==========================       ",
+	"                          ",
+	"                          ",
+	"                          ",
+	"                          ",
+	"                          ",
+	"                          ",
+	"                          ",
+	"                          ",
+	"^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
 ], {
 	// The size of each grid
 	tileWidth: 64,
@@ -66,9 +86,8 @@ const level = addLevel([
 	// Define what each symbol means (in components)
 	tiles: {
 		"@": () => [
-			sprite("panda2"),
+			sprite("panda3"),
 			area(),
-			set_size(0.5)
 			body(),
 			anchor("bot"),
 			"player",
@@ -105,11 +124,11 @@ onKeyPress("space", () => {
 })
 
 onKeyDown("left", () => {
-	player.move(-SPEED, 0)
+	player.move(SPEED, 0)
 })
 
 onKeyDown("right", () => {
-	player.move(SPEED, 0)
+	player.move(-SPEED, 0)
 })
 
 // Back to the original position if hit a "danger" item
@@ -120,7 +139,7 @@ player.onCollide("danger", () => {
 // Eat the coin!
 player.onCollide("coin", (coin) => {
 	destroy(coin)
-	play("score")
+
 })
 
 

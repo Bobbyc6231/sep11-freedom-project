@@ -426,6 +426,16 @@ kaboom({
 - Tried `set size` to resize my sprite and it didn't work
 - Did research about how to resize however the only solution was to take a new image
 - I was able to choose a smaller image which was fine however I still need to find out how to shrink the image just to make it a little more easy to customize the images/sprites
+
+
+### 01/22/24
+
+- I finally added a custom background by creating a sprite then setting that sprite the size of the entire scren so it looks like a background image
+- Figured this out with this video (https://www.youtube.com/watch?v=hgReGsh5xVU)
+- Added the difficulty of reversing the controls
+- I put spikes below the screen that the usar can't see so that when a user falls off they will respawn without having to reset the page
+
+-
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
 * Links you used today (websites, videos, etc)
