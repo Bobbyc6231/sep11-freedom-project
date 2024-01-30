@@ -435,6 +435,11 @@ kaboom({
 - Added the difficulty of reversing the controls
 - I put spikes below the screen that the usar can't see so that when a user falls off they will respawn without having to reset the page
 
+### 01/28/24
+- I tried to create multiple levels using portals to travel to a diffierent levels (DID NOT WORK)
+- Attempted to use the templates from kaboom.js but something is missing that is making my website just not appear at all 
+
+
 -
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569

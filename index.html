@@ -48,6 +48,7 @@ loadSprite("spike", "/sprites/spike.png")
 loadSprite("grass", "/sprites/grass.png")
 loadSprite("ghosty", "/sprites/ghosty.png")
 loadSprite("minecraft2", "/sprites/minecraft2.png")
+loadSprite("portal", "/sprites/portal.png")
 
 
 const SPEED = 480
@@ -58,11 +59,11 @@ add([
 	sprite("minecraft2", {width: width(), height: height()})
 ]);
 
-const level = addLevel([
+const levels = addLevel([
 	// Design the level layout with symbols
 	"@  ^ $$",
 	   " ==========================",
-	   "    $$$$$$$$$$$$    ",
+	   "    $$$$$$$$$$$$  p  ",
 	   "        ",
 	   " ===========================       ",
 	   "     $$               $$  ",
@@ -77,7 +78,19 @@ const level = addLevel([
 	"                          ",
 	"                          ",
 	"^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-], {
+],
+[
+		"     $    $    $    $     $",
+		"     $    $    $    $     $",
+		"                           ",
+		"                           ",
+		"                           ",
+		"                           ",
+		"                           ",
+		" ^^^^>^^^^>^^^^>^^^^>^^^^^@",
+		"===========================",
+	],
+{
 	// The size of each grid
 	tileWidth: 64,
 	tileHeight: 64,
@@ -109,6 +122,14 @@ const level = addLevel([
 			area(),
 			anchor("bot"),
 			"danger",
+		],
+		"p": () => [
+			sprite("portal"),
+			area({ scale: 0.5 }),
+			anchor("bot"),
+			pos(0, -12),
+			offscreen({ hide: true }),
+			"portal",
 		],
 	},
 })
@@ -142,6 +163,22 @@ player.onCollide("coin", (coin) => {
 
 })
 
+player.onCollide("portal", () => {
+		play("portal")
+		if (levelId + 1 < LEVELS.length) {
+			go("game", {
+				levelId: levelId + 1,
+				coins: coins,
+			})
+		} else {
+			go("win")
+		}
+	})
+
+scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
+
+// add level to scene
+const level = addLevel(LEVELS[levelId ?? 0], levelConf)
 
 
 
