@@ -437,8 +437,32 @@ kaboom({
 
 ### 01/28/24
 - I tried to create multiple levels using portals to travel to a diffierent levels (DID NOT WORK)
-- Attempted to use the templates from kaboom.js but something is missing that is making my website just not appear at all 
+- Attempted to use the templates from kaboom.js but something is missing that is making my website just not appear at all
 
+### 02/04/24
+-  I added
+```js
+player.onPhysicsResolve(() => {
+		// Set the viewport center to player.pos
+		camPos(player.pos)
+	})
+```
+-  this made the camera position it so the character is always in the center of the screen wherever you move which I really like
+-  Only issue with this is it made the custom background to be only a small part of the screen and now I have to figure out how to always make it the back of the screen
+
+- I attempted to add
+```js
+player.onCollide("apple", (a) => {
+		destroy(a)
+		// as we defined in the big() component
+		player.biggify(3)
+		hasApple = false
+		play("powerup")
+	})
+```
+- I attempted to change the size of the player when it hits a coin however nothing was working
+- I tried to remove each line one by one that was causing the entire screen to shut down and become white but couldn't figure it out
+- I believe it is because of either the `player.biggify` or `play("powerup")`
 
 -
 <!--
