@@ -464,6 +464,22 @@ player.onCollide("apple", (a) => {
 - I tried to remove each line one by one that was causing the entire screen to shut down and become white but couldn't figure it out
 - I believe it is because of either the `player.biggify` or `play("powerup")`
 
+### 02/24/2024
+
+- I started from scratch a whole new project and I followed a template
+- Put in a bunch of new sprites that follow the exact formula for the template
+- However I found the issue of adding sounds because without the sounds some aspects wouldn't work such as hitting a block wouldn't make the apple appear
+- I removed every aspect that played a sound and everything regarding how the game is supposed to work, works fine
+- I attempted to create and call a function to shrink the sprite but nothing worked
+```js
+smal() {
+			destScale = .5
+			timer = 0
+			isBig = true
+		},
+```
+- (Goal)Figure out how to shrink a sprite
+
 -
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
