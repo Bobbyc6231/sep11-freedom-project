@@ -478,9 +478,34 @@ smal() {
 			isBig = true
 		},
 ```
+
+
 - (Goal)Figure out how to shrink a sprite
 
--
+
+### 02/26/24
+
+- Ask Mr.Mueller how to shrink sprite
+- `scale(.5),` would shrink it but the function `big()` was making it to it's original size
+- All I had to do was remove the `big()` function however this made it so that the apple didn't increase the size but just makes the `biggify()` function not work
+```js
+biggify(time) {
+			destScale = 1
+			timer = time
+			isBig = true
+		},
+	}
+```
+```js
+player.onCollide("apple", (a) => {
+		destroy(a)
+		// player.biggify(3)
+		hasApple = false
+		play("powerup")
+	})
+```
+- I attempted to comment out each line to find out which was causing the screen to black out and it was the biggify as in the console it says it is no longer defined
+- (Must ask around to see why it is no longer defined)
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
 * Links you used today (websites, videos, etc)
