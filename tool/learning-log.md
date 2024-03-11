@@ -506,6 +506,21 @@ player.onCollide("apple", (a) => {
 ```
 - I attempted to comment out each line to find out which was causing the screen to black out and it was the biggify as in the console it says it is no longer defined
 - (Must ask around to see why it is no longer defined)
+
+
+
+### 03/04/2024
+
+- I figured out how to add sound to my code
+- I saw my friend Johnathan using sound and I asked him how it was done and he told me how to upload mp3 sounds
+- This is huge because this will make it more kung fu panda related
+```js
+loadSound("coin", "/examples/sounds/score.mp3")
+```
+
+- I still need to figure out the sizing issue however This is a huge step in the right direction
+
+
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
 * Links you used today (websites, videos, etc)
