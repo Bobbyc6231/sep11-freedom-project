@@ -1,8 +1,8 @@
 # Entry 4
 ##### 03/17/24
 
-## content
-Little by little more change is happening to my education about[kaboom](https://kaboomjs.com/). It has become significantly more advanced than what it was. I am working each week doing a little more each time and the little things add up and make a difference. Each time I work on this project I discover something new each time and it is quite amazing seeing it all add up and come together.
+## Content
+Little by little more change is happening to my education about [kaboom](https://kaboomjs.com/). It has become significantly more advanced than what it was. I am working each week doing a little more each time and the little things add up and make a difference. Each time I work on this project I discover something new each time and it is quite amazing seeing it all add up and come together.
 
 
 I recently found a new template that had **multiple levels** which is what I wanted to add to my game. The player would go through a portal and transfer to the next level, however the code of how that works exactly is still confusing to me but I intend on learning it very soon. This made the hard part done for me and this added a significant level of difficulty to the platformer game. The way that I added levels was by having multiple arrays of different levels. So instead of just this
