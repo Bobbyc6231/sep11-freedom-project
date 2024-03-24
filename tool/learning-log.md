@@ -520,6 +520,12 @@ loadSound("coin", "/examples/sounds/score.mp3")
 
 - I still need to figure out the sizing issue however This is a huge step in the right direction
 
+### 03/23/2024
+
+- I changed the sprites
+- I found images and removed the background of them
+- I changed the sizing of the sprites and figured out what theme I want (A combination of my favorite games and memories)
+
 
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
