@@ -527,6 +527,37 @@ loadSound("coin", "/examples/sounds/score.mp3")
 - I changed the sizing of the sprites and figured out what theme I want (A combination of my favorite games and memories)
 
 
+### 03/31/2024
+
+- I changed the the text size and location of the words that appears after one wins or loses
+```js
+scene("lose", () => {
+	add([
+		rgb(0),
+		pos(0,500),
+		scale(5),
+		text("You have Lost"),
+		alert("(Can't do that) press any key to restart"),
+
+
+	])
+	onKeyPress(() => go("game"))
+})
+
+scene("win", () => {
+	add([
+		text("You have Won"),
+		rgb(0),
+		pos(0,500),
+		scale(5),
+		alert("press any key to restart"),
+	])
+	onKeyPress(() => go("game"))
+})
+```
+- New Idea, have there be 100 dumplings and that is the way to win
+- which is how I can add my own conditional 
+
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
 * Links you used today (websites, videos, etc)

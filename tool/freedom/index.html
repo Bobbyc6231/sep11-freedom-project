@@ -39,7 +39,7 @@ import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
 
 
 kaboom({
-	background: [33, 137, 138],
+	background: [30],
 })
 
 // load assets
@@ -117,8 +117,8 @@ function big() {
 }
 
 // define some constants
-const JUMP_FORCE = 1320
-const MOVE_SPEED = 480
+const JUMP_FORCE = 1720
+const MOVE_SPEED = 500
 const FALL_DEATH = 2400
 
 const LEVELS = [
@@ -308,7 +308,7 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 				coins: coins,
 			})
 		} else {
-			go("win")
+			go("lose")
 		}
 	})
 
@@ -368,6 +368,8 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 		coinPitch += 100
 		coins += 1
 		coinsLabel.text = coins
+
+		
 	})
 
 	const coinsLabel = add([
@@ -387,11 +389,11 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 	onKeyPress("space", jump)
 
 	onKeyDown("left", () => {
-		player.move(-MOVE_SPEED, 0)
+		player.move(MOVE_SPEED, 0)
 	})
 
 	onKeyDown("right", () => {
-		player.move(MOVE_SPEED, 0)
+		player.move(-MOVE_SPEED, 0)
 	})
 
 	onKeyPress("down", () => {
@@ -416,7 +418,12 @@ scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
 scene("lose", () => {
 	add([
-		text("You Lose"),
+		rgb(0),
+		pos(0,500),
+		scale(5),
+		text("You have Lost"),
+		alert("(Can't do that) press any key to restart"),
+
 
 	])
 	onKeyPress(() => go("game"))
@@ -424,7 +431,11 @@ scene("lose", () => {
 
 scene("win", () => {
 	add([
-		text("You Win"),
+		text("You have Won"),
+		rgb(0),
+		pos(0,500),
+		scale(5),
+		alert("press any key to restart"),
 	])
 	onKeyPress(() => go("game"))
 })

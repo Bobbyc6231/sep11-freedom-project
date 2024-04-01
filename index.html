@@ -123,14 +123,14 @@ const level = addLevel([
 			anchor("bot"),
 			"danger",
 		],
-		// "p": () => [
-		// 	sprite("portal"),
-		// 	area({ scale: 0.5 }),
-		// 	anchor("bot"),
-		// 	pos(0, -12),
-		// 	offscreen({ hide: true }),
-		// 	"portal",
-		// ],
+		"p": () => [
+			sprite("portal"),
+			area({ scale: 0.5 }),
+			anchor("bot"),
+			pos(0, -12),
+			offscreen({ hide: true }),
+			"portal",
+		],
 	},
 })
 
@@ -172,22 +172,22 @@ player.onPhysicsResolve(() => {
 
 
 
-// player.onCollide("portal", () => {
-// 		play("portal")
-// 		if (levelId + 1 < LEVELS.length) {
-// 			go("game", {
-// 				levelId: levelId + 1,
-// 				coins: coins,
-// 			})
-// 		} else {
-// 			go("win")
-// 		}
-// 	})
+player.onCollide("portal", () => {
+		play("portal")
+		if (levelId + 1 < LEVELS.length) {
+			go("game", {
+				levelId: levelId + 1,
+				coins: coins,
+			})
+		} else {
+			go("win")
+		}
+	})
 
-// scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
+scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
-// // add level to scene
-// const level = addLevel(LEVELS[levelId ?? 0], levelConf)
+// add level to scene
+const level = addLevel(LEVELS[levelId ?? 0], levelConf)
 
 
 
