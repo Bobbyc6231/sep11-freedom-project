@@ -556,7 +556,20 @@ scene("win", () => {
 })
 ```
 - New Idea, have there be 100 dumplings and that is the way to win
-- which is how I can add my own conditional 
+- which is how I can add my own conditional
+
+
+### 04/05/2024
+
+- I attempted to add my own conditional so that if the person collects 50 dumcplings(coins) that the player would win
+
+```js
+if(coins=="50"){
+	go("win")
+}
+```
+
+- This didn't work and I tried a bunch of other conditionals however it still didn't work and I have to continue trying to add my own conditional and I have to work out the kinks for what I want to happen
 
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
