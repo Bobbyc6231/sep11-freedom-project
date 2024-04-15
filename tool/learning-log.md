@@ -592,8 +592,11 @@ player.onCollide("coin", (c) => {
 
 	})
 ```
+- Added a new sprite which can move around if the player pushes it which can be used in a variety of ways 
+- My next step is to customize the levels so that it is a little more fun and interactive which would make the game more fun
 
-- 
+
+-
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
 * Links you used today (websites, videos, etc)
