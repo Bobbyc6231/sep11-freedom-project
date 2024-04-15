@@ -571,6 +571,29 @@ if(coins=="50"){
 
 - This didn't work and I tried a bunch of other conditionals however it still didn't work and I have to continue trying to add my own conditional and I have to work out the kinks for what I want to happen
 
+
+### 04/08/2024
+
+- I have added my own conditional so that when the player collects 100 coins the player wins and I did that by adding the code below to the function where anything revolving coins is defined
+
+```js
+player.onCollide("coin", (c) => {
+		destroy(c)
+	    play("coin", {
+		detune: coinPitch,
+		 })
+		coinPitch += 100
+		coins += 1
+		coinsLabel.text = coins
+		if(coins=="100"){
+			go("win")
+		}
+
+
+	})
+```
+
+- 
 <!--
 >>>>>>> 2493ab47781e40839cd9a255c5622d2e60742569
 * Links you used today (websites, videos, etc)
