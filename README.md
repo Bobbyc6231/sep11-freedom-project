@@ -4,7 +4,7 @@ by Bobby Chan
 ## Context
 I am a student at [HSTAT](https://www.hstat.org/) in the [Software Engineering Program](https://hstatsep.github.io/). The "Freedom Project" for SEP11 is a year-long project all about making something using JavaScript along with a third-party JS tool.
 
-For my project, I chose to independently study [Kaboom](https://kaboomjs.com/ ) in order to help me make a game where a sprite has to collect fruits while avoiding obstacles to get to the next level.
+For my project, I chose to independently study [Kaboom](https://kaboomjs.com/ ) in order to help me make a game where a sprite has to collect a certain amount of something while avoiding obstacles to win.
 
 ## Links
 
