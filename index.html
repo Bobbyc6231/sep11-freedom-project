@@ -9,10 +9,12 @@
         <link href="style.css" rel="stylesheet" type="text/css" />
         <style>
             /* CSS */
-
+			.hi{
+				text-align: center;
+			}
         </style>
 
-        <title>Title</title>
+        <title>t</title>
     </head>
     <body>
         <!-- HTML -->
@@ -31,166 +33,414 @@
 <script type="module">
 
 // import kaboom lib
-import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
-
-// initialize kaboom context
-kaboom();
-
-// Build levels with addLevel()
-
-// Start game
-kaboom()
-
-// Load assets
-loadSprite("panda3", "/sprites/panda3.png")
-loadSprite("coin", "/sprites/coin.png")
-loadSprite("spike", "/sprites/spike.png")
-loadSprite("grass", "/sprites/grass.png")
-loadSprite("ghosty", "/sprites/ghosty.png")
-loadSprite("minecraft2", "/sprites/minecraft2.png")
-// loadSprite("portal", "/sprites/portal.png")
+ import kaboom from "https://unpkg.com/kaboom@3000.0.1/dist/kaboom.mjs";
 
 
-const SPEED = 480
 
-setGravity(10000)
 
-add([
-	sprite("minecraft2", {width: width(), height: height()})
-]);
+kaboom({
+	background: [30],
+})
 
-const level = addLevel([
-	// Design the level layout with symbols
-	"@   $",
-	   " ==========================",
-	   "    $$$$$$$$$$$$  p  ",
-	   "        ",
-	   " =========================      ",
-	   "     $$               $$  ",
-	   "  $$.    ^     $$   ^            ",
-	" ==========================       ",
-	"                          ",
-	"                          ",
-	"                          ",
-	"                          ",
-	"                          ",
-	"                          ",
-	"                          ",
-	"                          ",
-	"^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-],
-// [
-// 		"     $    $    $    $     $",
-// 		"     $    $    $    $     $",
-// 		"                           ",
-// 		"                           ",
-// 		"                           ",
-// 		"                           ",
-// 		"                           ",
-// 		" ^^^^>^^^^>^^^^>^^^^>^^^^^@",
-// 		"===========================",
-// 	],
-{
-	// The size of each grid
+// load assets
+loadSprite("bean", "sprites/bean.png")
+loadSprite("bag", "sprites/bag.png")
+loadSprite("ghosty", "sprites/ghosty.png")
+loadSprite("spike", "sprites/spike.png")
+loadSprite("grass", "sprites/grass.png")
+loadSprite("steel", "sprites/steel.png")
+loadSprite("prize", "sprites/jumpy.png")
+loadSprite("apple", "sprites/apple.png")
+loadSprite("portal", "sprites/portal.png")
+loadSprite("coin", "sprites/coin.png")
+loadSound("coin", "examples/sounds/score.mp3")
+// loadSound("powerup", "/examples/sounds/powerup.mp3")
+// loadSound("blip", "/examples/sounds/blip.mp3")
+// loadSound("hit", "/examples/sounds/hit.mp3")
+// loadSound("portal", "/examples/sounds/portal.mp3")
+
+setGravity(3200)
+
+alert("To win this game you must complete a task, It is up to you to figure out what it is, HAVE FUN!!! (Use arrow keys to move and space to jump, some other keys will do different things btw)")
+
+// custom component controlling enemy patrol movement
+function patrol(speed = 60, dir = 1) {
+	return {
+		id: "patrol",
+		require: [ "pos", "area" ],
+		add() {
+			this.on("collide", (obj, col) => {
+				if (col.isLeft() || col.isRight()) {
+					dir = -dir
+				}
+			})
+		},
+		update() {
+			this.move(speed * dir, 0)
+		},
+	}
+}
+
+
+
+// define some constants
+const JUMP_FORCE = 1720
+const MOVE_SPEED = 500
+const FALL_DEATH = 2400
+
+const LEVELS = [
+	[
+		"                      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  @ ",
+		"           --      ------------------------------------------------------------------ ",
+		"  $$             $$   ",
+		"      %  -----------------  ",
+		"                                 ",
+        "^ $$      >          > = @",
+		" ========================",
+	],
+	[
+		"                          $",
+		"          @                $",
+		"                          $",
+		"                          $",
+		"                          $",
+		"         $  $$           $",
+		"  %      ====            $",
+		"                        $",
+		"        @                  ",
+		"       ^^      = >      @",
+		"===========================",
+	],
+	[
+		"     $ $$   $    $    $     $",
+		"     $ $$   $    $    $     $",
+		"                           ",
+		"        $         $          ",
+		"                      $     ",
+		"  $        $                 ",
+		"                           ",
+		"     ^    >   >    >      >.  ^  @",
+		"===============================",
+	],
+	[
+	"                                                        $$$$$$$$$          @",
+	"                          $$   ----------------------------------- ",
+	"                     ------  ",
+	"                   $$          ",
+	"         ^  $$ ------             ",
+    "  $$  ------                   ",
+	"----",
+
+	],
+]
+
+// define what each symbol means in the level graph
+const levelConf = {
 	tileWidth: 64,
 	tileHeight: 64,
-	// The position of the top left block
-	pos: vec2(100, 200),
-	// Define what each symbol means (in components)
 	tiles: {
-		"@": () => [
-			sprite("panda3"),
-			area(),
-			body(),
-			anchor("bot"),
-			"player",
-		],
 		"=": () => [
 			sprite("grass"),
 			area(),
 			body({ isStatic: true }),
 			anchor("bot"),
+			offscreen({ hide: true }),
+			"platform",
+			scale(.08),
+		],
+		"-": () => [
+			sprite("steel"),
+			area(),
+			body({ isStatic: true }),
+			offscreen({ hide: true }),
+			anchor("bot"),
+			scale(.073)
+		],
+		"0": () => [
+			sprite("bag"),
+			area(),
+			body({ isStatic: true }),
+			offscreen({ hide: true }),
+			anchor("bot"),
 		],
 		"$": () => [
 			sprite("coin"),
 			area(),
+			pos(0, -9),
 			anchor("bot"),
+			offscreen({ hide: true }),
+			scale(.2),
 			"coin",
+		],
+		"%": () => [
+			sprite("prize"),
+			area(),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"prize",
+			scale(.05),
 		],
 		"^": () => [
 			sprite("spike"),
+			area({ scale: 0.5 }),
+			body({ isStatic: true }),
+			anchor("bot"),
+			offscreen({ hide: true }),
+			"danger",
+			scale(.2),
+		],
+		"#": () => [
+			sprite("apple"),
 			area(),
 			anchor("bot"),
-			"danger",
+			body(),
+			scale(.1),
+			offscreen({ hide: true }),
+			"apple",
 		],
-		"p": () => [
+		">": () => [
+			sprite("ghosty"),
+			area(),
+			anchor("bot"),
+			body(),
+			patrol(),
+			offscreen({ hide: true }),
+			"enemy",
+			scale(.1),
+		],
+		"@": () => [
 			sprite("portal"),
 			area({ scale: 0.5 }),
 			anchor("bot"),
 			pos(0, -12),
 			offscreen({ hide: true }),
 			"portal",
+			scale(.3),
 		],
 	},
-})
+}
 
-// Get the player object from tag
-const player = level.get("player")[0]
+scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
 
-// Movements
-onKeyPress("space", () => {
-	if (player.isGrounded()) {
-		player.jump()
-	}
-})
+	// add level to scene
+	const level = addLevel(LEVELS[levelId ?? 0], levelConf)
 
-onKeyDown("left", () => {
-	player.move(SPEED, 0)
-})
+	// define player object
+	const player = add([
+		sprite("bean"),
+		pos(100, 0),
+		area(),
+		scale(.2),
+		// setSize(0.3),
+		// makes it fall to gravity and jumpable
+		body(),
+		// the custom component we defined above
+		anchor("bot"),
+	])
 
-onKeyDown("right", () => {
-	player.move(-SPEED, 0)
-})
 
-// Back to the original position if hit a "danger" item
-player.onCollide("danger", () => {
-	player.pos = level.tile2Pos(0, 0)
-})
 
-// Eat the coin!
-player.onCollide("coin", (coin) => {
-	destroy(coin)
+	// action() runs every frame
+	player.onUpdate(() => {
+		// center camera to player
+		camPos(player.pos)
+		// check fall death
+		if (player.pos.y >= FALL_DEATH) {
+			go("lose")
+		}
+	})
 
-})
+	player.onBeforePhysicsResolve((collision) => {
+		if (collision.target.is(["platform", "soft"]) && player.isJumping()) {
+			collision.preventResolution()
+		}
+	})
 
-player.onPhysicsResolve(() => {
+	player.onPhysicsResolve(() => {
 		// Set the viewport center to player.pos
 		camPos(player.pos)
 	})
 
+	// if player onCollide with any obj with "danger" tag, lose
+	player.onCollide("danger", () => {
+		go("lose")
+		// play("hit")
+	})
 
-
-
-
-player.onCollide("portal", () => {
-		play("portal")
+	player.onCollide("portal", () => {
 		if (levelId + 1 < LEVELS.length) {
 			go("game", {
 				levelId: levelId + 1,
 				coins: coins,
 			})
 		} else {
-			go("win")
+			go("lose")
 		}
 	})
 
-scene("game", ({ levelId, coins } = { levelId: 0, coins: 0 }) => {
+	player.onGround((l) => {
+		if (l.is("enemy")) {
+			player.jump(JUMP_FORCE * 1.5)
+			destroy(l)
+			addKaboom(player.pos)
+			// play("powerup")
+		}
+	})
 
-// add level to scene
-const level = addLevel(LEVELS[levelId ?? 0], levelConf)
+	player.onCollide("enemy", (e, col) => {
+		// if it's not from the top, die
+		if (!col.isBottom()) {
+			go("lose")
+			// play("hit")
+		}
+	})
+
+	let hasApple = false
+
+	// grow an apple if player's head bumps into an obj with "prize" tag
+	player.onHeadbutt((obj) => {
+		if (obj.is("prize") && !hasApple) {
+			const apple = level.spawn("#", obj.tilePos.sub(0, 1))
+			apple.jump()
+			hasApple = true
+			// play("blip")
+		}
+	})
+
+	// player grows big onCollide with an "apple" obj
+	player.onCollide("apple", (a) => {
+		if(player.scale== .2){
+		destroy(a)
+		// as we defined in the big() component
+		this.biggify(3)
+		hasApple = false
+		}
+		// play("powerup")
+	})
+
+	let coinPitch = 0
+
+	onUpdate(() => {
+		if (coinPitch > 0) {
+			coinPitch = Math.max(0, coinPitch - dt() * 100)
+		}
+	})
+
+	player.onCollide("coin", (c) => {
+		destroy(c)
+	    play("coin", {
+		detune: coinPitch,
+		 })
+		coinPitch += 100
+		coins += 1
+		coinsLabel.text = coins
+		if(coins=="100"){
+			go("win")
+		}
+
+
+	})
+
+	const coinsLabel = add([
+		text(coins),
+		pos(24, 24),
+		fixed(),
+	])
+
+	function jump() {
+		// these 2 functions are provided by body() component
+		if (player.isGrounded()) {
+			player.jump(JUMP_FORCE)
+		}
+	}
+
+	function idk(){
+		player.scale = .5
+
+	}
+	onKeyPress("p", idk)
+
+
+	function idk2(){
+		alert("https://www.youtube.com/watch?v=xvFZjo5PgG0")
+
+	}
+	onKeyPress("y", idk2)
+
+
+	function idk3(){
+		go("lose")
+
+	}
+	onKeyPress("l", idk3)
+
+	// function idk4(){
+
+	// }
+
+	// onKeyPress("h", idk4)
+
+	// jump with space
+	onKeyPress("space", jump)
+
+	onKeyDown("left", () => {
+		player.move(MOVE_SPEED, 0)
+	})
+
+	onKeyDown("right", () => {
+		player.move(-MOVE_SPEED, 0)
+	})
+
+	onKeyPress("down", () => {
+		player.weight = 3
+	})
+
+	onKeyRelease("down", () => {
+		player.weight = 1
+	})
+
+	onGamepadButtonPress("south", jump)
+
+	onGamepadStick("left", (v) => {
+		player.move(v.x * MOVE_SPEED, 0)
+	})
+
+	onKeyPress("f", () => {
+		setFullscreen(!isFullscreen())
+	})
+
+})
+
+scene("lose", () => {
+	add([
+		rgb(0),
+		pos(0,500),
+		scale(5),
+		text("You have Lost"),
+		alert("(Can't do that) press any key to restart"),
+
+
+	])
+	onKeyPress(() => go("game"))
+})
+
+scene("win", () => {
+	add([
+		text("You have Won"),
+		rgb(0),
+		pos(0,500),
+		scale(5),
+
+
+	])
+	onKeyPress(() => go("game"))
+})
 
 
 
+
+go("game")
 
 
 
